@@ -1,16 +1,5 @@
 import copy
 
-#raiz = bloco("Raiz")
-#filho = bloco("Filho")
-#raiz.add_filho(filho)
-
-#for i in raiz.filhos:
-#    print(i.nome)
-
-#for i in range (len(raiz.filhos)):
-#    print(raiz.filhos[i].nome)
-
-# Se o 0 tá no meio, tem 4 novos estados possíveis(dando swap com cada um dos 4 lados)
 
 class bloco :
     def __init__(self, estado, movimento, g, h, pai):
@@ -40,8 +29,6 @@ class bloco :
                 melhor_filho = filho
         return melhor_filho
 
-    #def __str__(self):
-    #  return f"{self.estado}"
 
 numero_de_movimentos = 0
 quantidade_estados_expandidos = 0
@@ -58,7 +45,7 @@ estado_final = [[1,2,3],
 def ta_dentro_do_tabuleiro(linha, coluna):
     return linha >= 0 and linha <= TOTAL_LINHAS - 1 and coluna >= 0 and coluna <= TOTAL_COLUNAS - 1
 
-def chegou_no_estado_final(estado): # se tiver todas as linhas e colunas iguais, retorna true. Se tiver UMA coisa diferente ele termina com false
+def chegou_no_estado_final(estado): 
     for linha in range(TOTAL_LINHAS):
         for coluna in range(TOTAL_COLUNAS):
             if estado[linha][coluna] != estado_final[linha][coluna]:
@@ -160,10 +147,8 @@ print(f"Número total de estados expandidos: {quantidade_estados_expandidos}")
 
 while True:
   if inicio.pai == None:
-    #print(inicio.estado)
     break
-  #print(inicio.estado)
-  #print(inicio.movimento)
+
   inicio = inicio.pai
 
 
@@ -171,17 +156,10 @@ print("Caminho percorrido:")
 while inicio.filhos != []:
   for linha in inicio.estado:
     print(linha)
-  #print(inicio.estado)
   inicio = inicio.escolhe_melhor_filho()
   print(inicio.movimento)
 for linha in inicio.estado:
     print(linha)
-#print(inicio.estado)  
-
-#print(move_pra_direita(inicio.estado))
-#print(filho_esquerda.estado)
-
-# como fazer pra passar pra cada um dos 4 filhos gerados sem transformar o estado pai no primeiro deles?
 
 
 
